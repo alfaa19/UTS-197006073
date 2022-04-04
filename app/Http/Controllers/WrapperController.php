@@ -27,10 +27,10 @@ class WrapperController extends Controller
 
     }
 
-    public function  allLeagueEntries($queue,$tier,$division, Request $request, $pge){
+    public function  allLeagueEntries($queue,$tier,$division, Request $request){
         $key = $request->api_key;
-        $pges = $pge->page;
-        $json = Http::get('https://na1.api.riotgames.com/lol/league/v4/entries/'.$queue.'/'.$tier.'/'.$division.'?'.$pges.'&api_key='.$key)->json();
+        $page = $request->page;
+        $json = Http::get('https://na1.api.riotgames.com/lol/league/v4/entries/'.$queue.'/'.$tier.'/'.$division.'?page='.$page.'&api_key='.$key)->json();
         return response()->json($json);
     }
 
@@ -39,7 +39,6 @@ class WrapperController extends Controller
         $json = Http::get('https://na1.api.riotgames.com/lol/spectator/v4/featured-games?api_key='.$key)->json();
         return response()->json($json);
     }
-
 
 }
 

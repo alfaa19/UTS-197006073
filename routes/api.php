@@ -33,3 +33,4 @@ Route::get('/user/identitas', function (){
         ]
     ];
 })->middleware('npm');
+
